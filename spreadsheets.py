@@ -36,6 +36,15 @@ def taxes_calc(adjusted_income, tax_brackets):
             after_tax = after_tax - (amount_taxable * curr_tax.perc)
             
 
+def aggregate_taxes(adjusted_income, state_brackets, fed_brackets):
+        final_result = adjusted_income
+
+        if adjusted_income > 200000:
+            final_result = (200000 * .9235) + ((adjusted_income - 200000) * .9145)
+        else:
+            final_result = final_result * (1 - 0.0765)
+         
+
 if __name__ == "__main__":
     federal_brackets = [
         TaxBracket(.1, 9700),
